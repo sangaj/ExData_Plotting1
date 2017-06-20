@@ -1,3 +1,5 @@
+
+### Check the data file otherwise download and unzip it
 if(!file.exists("exdata-data-household_power_consumption.zip")) {
   temp <- tempfile()
   download.file("http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",temp)
@@ -5,7 +7,7 @@ if(!file.exists("exdata-data-household_power_consumption.zip")) {
   unlink(temp)
 }
 
-
+### read data and plot it 
 data <- read.table(file, header=T, sep=";",na.strings = "?")
 subdata <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
 subdata$Date <- strptime(subdata$Date,"%d/%m/%Y")
